@@ -9,9 +9,9 @@ import (
 
 type Config struct {
 	DiscordToken   string
-	OpenAIKey      string
-	OpenAIBase     string
-	OpenAIModel    string
+	AnthropicKey   string
+	AnthropicBase  string
+	AnthropicModel string
 	SystemPrompt   string
 }
 
@@ -22,9 +22,9 @@ func Load() *Config {
 
 	return &Config{
 		DiscordToken:   os.Getenv("DISCORD_TOKEN"),
-		OpenAIKey:      os.Getenv("OPENAI_API_KEY"),
-		OpenAIBase:     os.Getenv("OPENAI_API_BASE"),
-		OpenAIModel:    os.Getenv("OPENAI_MODEL"),
+		AnthropicKey:   os.Getenv("ANTHROPIC_API_KEY"),
+		AnthropicBase:  os.Getenv("ANTHROPIC_API_BASE"),
+		AnthropicModel: os.Getenv("ANTHROPIC_MODEL"),
 		SystemPrompt:   os.Getenv("SYSTEM_PROMPT"),
 	}
 }
