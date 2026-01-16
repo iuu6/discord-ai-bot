@@ -1,6 +1,7 @@
 package main
 
 import (
+	"discord-ai-bot/functions/action"
 	"discord-ai-bot/functions/chat"
 	"discord-ai-bot/functions/ping"
 	"discord-ai-bot/utils/config"
@@ -46,5 +47,7 @@ func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 		ping.Handle(s, m)
 	} else if strings.HasPrefix(m.Content, "/chat ") {
 		chat.Handle(s, m)
+	} else if strings.HasPrefix(m.Content, "/") || strings.HasPrefix(m.Content, "\\") {
+		action.Handle(s, m)
 	}
 }
