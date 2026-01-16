@@ -6,8 +6,8 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-func Send(s *discordgo.Session, channelID string, content string) {
-	_, err := s.ChannelMessageSend(channelID, content)
+func Send(s *discordgo.Session, channelID string, content string, reference *discordgo.MessageReference) {
+	_, err := s.ChannelMessageSendReply(channelID, content, reference)
 	if err != nil {
 		log.Printf("Error sending message: %v", err)
 	}

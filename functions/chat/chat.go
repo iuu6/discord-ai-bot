@@ -17,7 +17,7 @@ func Handle(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	query := strings.TrimPrefix(m.Content, "/chat ")
 	if query == "" {
-		messenger.Send(s, m.ChannelID, "Please provide a message after /chat")
+		messenger.Send(s, m.ChannelID, "Please provide a message after /chat", m.Reference())
 		return
 	}
 
@@ -41,11 +41,11 @@ func Handle(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	if err != nil {
 		log.Printf("Error calling OpenAI: %v", err)
-		messenger.Send(s, m.ChannelID, "Error communicating with AI")
+		messenger.Send(s, m.ChannelID, "Error communicating with AI", m.Reference())
 		return
 	}
 
 	if len(completion.Choices) > 0 {
-		messenger.Send(s, m.ChannelID, completion.Choices[0].Message.Content)
+		messenger.Send(s, m.ChannelID, completion.Choices[0].Message.Content, m.Reference())
 	}
 }

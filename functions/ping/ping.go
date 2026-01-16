@@ -7,5 +7,5 @@ import (
 )
 
 func Handle(s *discordgo.Session, m *discordgo.MessageCreate) {
-	messenger.Send(s, m.ChannelID, "pang")
+	messenger.Send(s, m.ChannelID, "pang", m.Reference())
 }
